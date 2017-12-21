@@ -125,7 +125,7 @@ if __name__ == "__main__":
     cudnn.benchmark = True
 
 
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     imgindex = 0
 
     while(True):

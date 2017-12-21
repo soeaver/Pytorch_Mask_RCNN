@@ -1,4 +1,4 @@
-# PyTorch has no tf.crop_and_resize function, Million thanks to [longwc](https://github.com/longcw/RoIAlign.pytorch) ported it from tensorflow!
+# PyTorch has no [tf.crop_and_resize](https://www.tensorflow.org/api_docs/python/tf/image/crop_and_resize) function used for feature pyramid network, Million thanks to [longwc](https://github.com/longcw/RoIAlign.pytorch) ported it from tensorflow!
 # Notice: We have no time to continue this project, the model is converted and well performed; The data pipeline is 95% complete, for the training you may study well for the loss function. :)
 
 ### Download the [tf+keras model](https://github.com/matterport/Mask_RCNN/releases) and run `python convert_weights/convert_weights.py` or download the converted model at [Dropbox](uploading).
@@ -55,7 +55,9 @@ python eval.py
 <img src="README/segm.png" width="500" align="center">
 
 ## Training(Not woring for now)...
-You may study well for the loss function in the [keras code](https://github.com/matterport/Mask_RCNN) and modify it at `network/mask_rcnn.py`.
+### Test data loader
+`python preprocess/test_data_loader`
+Loss function is at `network/mask_rcnn.py`, you may need study well for the loss function in the [keras code](https://github.com/matterport/Mask_RCNN) and modify it at `network/mask_rcnn.py`.
 
 ## Pipeline Description
 ### Overview:

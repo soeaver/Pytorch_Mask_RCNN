@@ -34,7 +34,7 @@ To train or test on MS COCO, you'll also need:
 
 * `./postprocess`: For the model's output...
 
-* `./README`: This package contains image will showed on the Gitlab.
+* `./README`: This package contains image will showed on the Github.
 
 ## Demo
 Change the path of the model at `demo.py`, and then run:
@@ -90,22 +90,11 @@ To train the RPN regressor, we also compute the shift and resizing needed to mak
 <img src="README/RoIAlign.png" width="500" align="center">
 
 ### Stage 2, Proposal Classification:
-This stage takes the region proposals from the RPN and classifies them.
-
-### 2.1 Proposal Classification
-Run the classifier heads on proposals to generate class propbabilities and bounding box regressions.
+This stage takes the region proposals from the RPN and feed the result to detection and mask branch respectively.
 
 ### 2.2  Detection
 
 <img src="README/roi_raw.png" width="500" align="center">
-
-#### Apply Bounding Box Refinement
-ROIs After Refinment
-
-<img src="README/roi_refine.png" width="500" align="center">
-
-#### Filter Low Confidence Detections
-Remove low confidence detections
 
 #### Per-Class Non-Max Suppression
 Detections after NMS

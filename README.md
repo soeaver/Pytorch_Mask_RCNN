@@ -1,6 +1,6 @@
 # PyTorch version of MASK-RCNN
 
-### Download the pretrained model at [Google drive](https://drive.google.com/a/aifi.io/file/d/1pEXgvdQjxxzqSbNeYWtfl1fjS6PVX-Ib/view?usp=sharing)
+### Download the pretrained model at [Dropbox](uploading)
  
 ## INSTALLATION
 ### CUDA CODE:

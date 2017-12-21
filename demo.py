@@ -129,7 +129,7 @@ if __name__ == "__main__":
     config = InferenceConfig()
     config.display()
 
-    pretrained_weight = "/home/tensorboy/AI/walmart/models/mrcnn.pth"
+    pretrained_weight = "./models/mrcnn.pth"
     state_dict = torch.load(pretrained_weight)
 
     model = MaskRCNN(config=config, mode='inference')
@@ -139,11 +139,11 @@ if __name__ == "__main__":
     cudnn.benchmark = True
     
 
-    image_path = 'README/walmart.jpg'
-    save_path = 'README/walmart_output.png'
+    image_path = 'README/ori.jpg'
+    save_path = 'README/ori_output.png'
     run_demo(image_path, save_path, model)
 
     # directory demo, inference on images of one directory and save the result
-    image_source_dir = '/home/tensorboy/AI/walmart/DATA/high_resolution'
-    image_save_dir = '/home/tensorboy/AI/walmart/DATA/high_resolution_result'
+    image_source_dir = '/DATA/high_resolution'
+    image_save_dir = '/DATA/high_resolution_result'
     directory_demo(image_source_dir, image_save_dir, model)

@@ -96,7 +96,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
         figure, ax = plt.subplots(1, figsize=figsize)
 
     # Generate random colors
-    colors = random_colors(20)
+    colors = random_colors(N)
 
     # Show area outside image boundaries.
     height, width = image.shape[:2]
@@ -107,20 +107,6 @@ def display_instances(image, boxes, masks, class_ids, class_names,
 
     masked_image = image.astype(np.uint32).copy()
     
-    for i in range(N):
-        class_id = class_ids[i]
-        # Bounding box
-        if not np.any(boxes[i]):
-            # Skip this instance. Has no bbox. Likely lost in image cropping.
-            continue  
-        people_count+=1
-        y1, x1, y2, x2 = boxes[i]
-        area_bbox = float(y2-y1) * (x2-x1)              
-        mean_area +=area_bbox
-        if area_bbox<mini_area:
-            mini_area=area_bbox
-        
-    mean_area = mean_area/(people_count+1e-8)
     for i in range(N):
         color = colors[i]
 

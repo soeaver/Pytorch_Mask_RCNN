@@ -53,6 +53,9 @@ Change the path of the model at `demo.py`, and then run:
 ```
 python demo.py
 ```
+Result:
+<img src="README/santas_output.png" width="500" align="center">
+
 ### Realtime webcam demo
 Change the path of the model at `realtime_demo.py`, and then run:
 ```

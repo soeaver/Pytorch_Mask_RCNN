@@ -36,9 +36,15 @@ To train or test on MS COCO, you'll also need:
 * `./README`: This package contains image will showed on the Github.
 
 ## Demo
+### Picture demo
 Change the path of the model at `demo.py`, and then run:
 ```
 python demo.py
+```
+### Realtime webcam demo
+Change the path of the model at `realtime_demo.py`, and then run:
+```
+python realtime_demo.py
 ```
 
 ## Evaluation

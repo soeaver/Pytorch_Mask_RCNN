@@ -144,6 +144,6 @@ if __name__ == "__main__":
     run_demo(image_path, save_path, model)
 
     # directory demo, inference on images of one directory and save the result
-    image_source_dir = '/DATA/high_resolution'
-    image_save_dir = '/DATA/high_resolution_result'
-    directory_demo(image_source_dir, image_save_dir, model)
+#    image_source_dir = '/DATA/high_resolution'
+#    image_save_dir = '/DATA/high_resolution_result'
+#    directory_demo(image_source_dir, image_save_dir, model)

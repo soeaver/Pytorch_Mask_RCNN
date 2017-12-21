@@ -1,4 +1,5 @@
-# PyTorch version of [tf+keras version MASK-RCNN](https://github.com/matterport/Mask_RCNN)
+# PyTorch version of [tf+keras version MASK-RCNN](https://github.com/matterport/Mask_RCNN).
+# Notice: We have no time to continue this project, the model is converted and well performed; The data pipeline is 95% complete, for the training you may study well for the loss function. :)
 
 ### Download the converted model at [Dropbox](uploading)
  

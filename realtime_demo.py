@@ -134,9 +134,7 @@ if __name__ == "__main__":
         #image = cv2.imread(os.path.join(IMAGE_DIR, random.choice(file_names)))
         # Run detection
         r = run_demo(image, model)
-#        print (image.shape)
-        # Visualize results
-#        r = results[0]
+
         boxes = r['rois']
         masks = r['masks'] 
         class_ids = r['class_ids'] 
@@ -156,8 +154,6 @@ if __name__ == "__main__":
         for i in range(N):
             color = colors[i]
             class_id = class_ids[i]
-            if class_id !=1:
-                continue
             # Bounding box
             if not np.any(boxes[i]):
                 # Skip this instance. Has no bbox. Likely lost in image cropping.

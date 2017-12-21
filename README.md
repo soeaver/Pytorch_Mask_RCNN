@@ -1,4 +1,3 @@
-# PyTorch version of [tf+keras version MASK-RCNN](https://github.com/matterport/Mask_RCNN).
 # PyTorch has no tf.crop_and_resize function, Million thanks to [longwc](https://github.com/longcw/RoIAlign.pytorch) ported it from tensorflow!
 # Notice: We have no time to continue this project, the model is converted and well performed; The data pipeline is 95% complete, for the training you may study well for the loss function. :)
 

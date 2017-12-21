@@ -42,8 +42,6 @@ Change the path of the model at `demo.py`, and then run:
 python demo.py
 ```
 
-## Training(Not woring for now)...
-
 ## Evaluation
 Change the path of the model at `eval.py`, and then run:
 ```
@@ -57,6 +55,8 @@ python eval.py
 
 <img src="README/segm.png" width="500" align="center">
 
+## Training(Not woring for now)...
+You may study well for the loss function in the [keras code](https://github.com/matterport/Mask_RCNN) and modify it at `network/mask_rcnn.py`.
 
 ## Pipeline Description
 ### Overview:

@@ -58,9 +58,8 @@ def random_colors(N, bright=True):
     brightness = 1.0 if bright else 0.7
     hsv = [(i / float(N), 1, brightness) for i in range(N)]
     colors = list(map(lambda c: colorsys.hsv_to_rgb(*c), hsv))
-#    print(colors)
-#    random.shuffle(colors)
-#    colors = [(0.0, 1.0, 0.0) for i in range(N)]
+    random.shuffle(colors)
+    colors = [(0.0, 1.0, 0.0) for i in range(N)]
     return colors
 
 
@@ -115,8 +114,6 @@ def display_instances(image, boxes, masks, class_ids, class_names,
     people_count=0
     for i in range(N):
         class_id = class_ids[i]
-        if class_id !=1:
-            continue
         # Bounding box
         if not np.any(boxes[i]):
             # Skip this instance. Has no bbox. Likely lost in image cropping.

@@ -106,8 +106,7 @@ def get_state_dict(weight_file):
     return weight_dict
 
 def make_name_right(state_dict, model):
-    pytorch_name1 = 
-    ['resnet_graph.layer1.0.bn3.weight',
+    pytorch_name1 = ['resnet_graph.layer1.0.bn3.weight',
      'resnet_graph.layer1.0.bn3.bias',
      'resnet_graph.layer1.0.bn3.running_mean',
      'resnet_graph.layer1.0.bn3.running_var',
@@ -218,7 +217,7 @@ if __name__ == "__main__":
     model.cuda()
     model.eval()
         
-    tf_weights= '/home/tensorboy/AI/walmart/models/mask_rcnn_coco.h5'
+    tf_weights= '/home/tensorboy/Downloads/mask_rcnn_coco.h5'
     state_dict = get_state_dict(tf_weights)
         
 

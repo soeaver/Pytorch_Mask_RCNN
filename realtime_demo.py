@@ -115,7 +115,7 @@ if __name__ == "__main__":
     config = InferenceConfig()
     config.display()
 
-    pretrained_weight = "/home/tensorboy/AI/walmart/models/mrcnn.pth"
+    pretrained_weight = "./models/mrcnn.pth"
     state_dict = torch.load(pretrained_weight)
 
     model = MaskRCNN(config=config, mode='inference')

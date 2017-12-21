@@ -76,10 +76,14 @@ python eval.py
 <img src="README/segm.png" width="500" align="center">
 
 ## Training(Not woring for now)...
-### Test data loader
+### Data loader
 `python preprocess/test_data_loader`
 
+### Loss function
 Loss function is at `network/mask_rcnn.py`, you may need study well for the loss function in the [keras code](https://github.com/matterport/Mask_RCNN) and modify it at `network/mask_rcnn.py`.
+
+### Using data loader backpropagation loss to train the model
+The `fit_loader`(https://github.com/ncullen93/torchsample/issues/24) function in [torchSample](https://github.com/ncullen93/torchsample) maybe a good replacer for `fit_generator` used by keras.
 
 ## Pipeline Description
 ### Overview:

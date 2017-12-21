@@ -107,11 +107,6 @@ def display_instances(image, boxes, masks, class_ids, class_names,
 
     masked_image = image.astype(np.uint32).copy()
     
-#    print('shape of boxes',boxes.shape)
-    mini_area = np.inf
-    mean_area = 0.
-    new_boxes = []
-    people_count=0
     for i in range(N):
         class_id = class_ids[i]
         # Bounding box
@@ -127,34 +122,20 @@ def display_instances(image, boxes, masks, class_ids, class_names,
         
     mean_area = mean_area/(people_count+1e-8)
     for i in range(N):
-    
-        class_id = class_ids[i]
-        if class_id !=1:
-            continue
+        color = colors[i]
+
         # Bounding box
         if not np.any(boxes[i]):
             # Skip this instance. Has no bbox. Likely lost in image cropping.
             continue
         y1, x1, y2, x2 = boxes[i]
-        area_bbox = float(y2-y1) * (x2-x1)
-        
-        if x2<float(width)*0.2:
-            color = colors[3]
-        elif x2>float(width)*0.2 and x2 <float(width)*0.4:
-            color = colors[6]
-        elif x2 >float(width)*0.4 and x2 <float(width)*0.7:
-            color = colors[9]     
-        elif x2 >float(width)*0.7 and x2 <float(width)*0.9:
-            color = colors[12]                           
-        else:
-            color = colors[15]        
-        
         p = patches.Rectangle((x1, y1), x2 - x1, y2 - y1, linewidth=2,
                               alpha=0.7, linestyle="dashed",
                               edgecolor=color, facecolor='none')
         ax.add_patch(p)
 
         # Label
+        class_id = class_ids[i]        
         score = scores[i] if scores is not None else None
         label = class_names[class_id]
         x = random.randint(x1, (x1 + x2) // 2)

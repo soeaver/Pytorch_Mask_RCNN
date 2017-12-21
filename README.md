@@ -46,11 +46,11 @@ Change the path of the model at `eval.py`, and then run:
 ```
 python eval.py
 ```
-### mAP of Bbox, [tf+keras model](https://github.com/matterport/Mask_RCNN/releases) has 0.347, the difference may come from some [upsample function](https://github.com/matterport/Mask_RCNN/issues/37), or other issues which would be great if you want to study deep:
+### mAP of Bbox, [tf+keras model](https://github.com/matterport/Mask_RCNN/releases) has 0.347, the difference may come from some [upsample function](https://github.com/matterport/Mask_RCNN/issues/37), or other issues which would be great if you want to dive deep:
 
 <img src="README/bbox.png" width="500" align="center">
 
-### mAP of Segmentation [tf+keras model](https://github.com/matterport/Mask_RCNN/releases) has 0.296, the difference may come from some [upsample function](https://github.com/matterport/Mask_RCNN/issues/37), or other issues which would be great if you want to study deep:
+### mAP of Segmentation [tf+keras model](https://github.com/matterport/Mask_RCNN/releases) has 0.296, the difference may come from some [upsample function](https://github.com/matterport/Mask_RCNN/issues/37), or other issues which would be great if you want to dive deep:
 
 <img src="README/segm.png" width="500" align="center">
 

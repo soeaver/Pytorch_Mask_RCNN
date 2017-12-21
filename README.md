@@ -6,6 +6,18 @@
 ## INSTALLATION
 ### CUDA CODE:
 Build NMS and [ROIAlign/CropAndResize](https://github.com/longcw/RoIAlign.pytorch)
++ Changing `-arch` in `lib/make.sh` for your GPU
+    ```
+    # Which CUDA capabilities do we want to pre-build for?
+    # https://developer.nvidia.com/cuda-gpus
+    # Compute/shader model   Cards
+    # 6.1                    P4, P40, Titan Xp, GTX 1080 Ti, GTX 1080
+    # 6.0                    P100
+    # 5.2                    M40, Titan X, GTX 980
+    # 3.7                    K80
+    # 3.5                    K40, K20
+    # 3.0                    K10, Grid K520 (AWS G2)
+    ```
 ```
 cd lib
 ./make.sh

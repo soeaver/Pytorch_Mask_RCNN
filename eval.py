@@ -21,8 +21,6 @@ from preprocess.InputProcess import (compose_image_meta, mold_image,
                                      mold_inputs, parse_image_meta,
                                      resize_image)
 
-from tnn.network.net_utils import load_net
-
 def to_variable(numpy_data, volatile=False, is_cuda=True):
     numpy_data = numpy_data.astype(np.float32)
     torch_data = torch.from_numpy(numpy_data).float()
@@ -193,9 +191,8 @@ if __name__ == "__main__":
     config = InferenceConfig()
     config.display()
 
-    pretrained_weight = "/extra/tensorboy/pretrained_models/mrcnn.pth"
+    pretrained_weight = "./models/mrcnn.pth"
     state_dict = torch.load(pretrained_weight)
-#    meta = load_net(pretrained_weight, model)
 
     model = MaskRCNN(config=config, mode='inference')
     model.load_state_dict(state_dict)
@@ -205,7 +202,7 @@ if __name__ == "__main__":
 
     # Validation dataset
     dataset_val = CocoDataset()
-    coco = dataset_val.load_coco("/data/coco", "minival", return_coco=True)
+    coco = dataset_val.load_coco("/coco", "minival", return_coco=True)
     dataset_val.prepare()
     #"bbox" or "segm" for bounding box or segmentation evaluation
     evaluate_coco(model, dataset_val, coco, config, "bbox")

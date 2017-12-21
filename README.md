@@ -1,6 +1,6 @@
-# PyTorch version of MASK-RCNN
+# PyTorch version of [tf+keras version MASK-RCNN](https://github.com/matterport/Mask_RCNN)
 
-### Download the pretrained model at [Dropbox](uploading)
+### Download the converted model at [Dropbox](uploading)
  
 ## INSTALLATION
 ### CUDA CODE:
@@ -22,16 +22,15 @@ To train or test on MS COCO, you'll also need:
   and the 35K [validation-minus-minival](https://dl.dropboxusercontent.com/s/s3tw5zcg7395368/instances_valminusminival2014.json.zip?dl=0)
   subsets. More details in the original [Faster R-CNN implementation](https://github.com/rbgirshick/py-faster-rcnn/blob/master/data/README.md). 
   
-## Structure of the code
-* `./network`: This package contains all the definitions for the mask rcnn.
+## Structure 
 
-* `./preprocess`: This package contains all the scripts for the data pipeline: Transform raw image and labels.
+* `./convert_weights`: How to convert the weights from [tf+keras version of MASK-RCNN](https://github.com/matterport/Mask_RCNN).
 
-* `./postprocess`: This package contains all the scripts for the model's output...
+* `./network`: The definitions for the mask rcnn.
 
-* `./tnn`: This is the training framework submodule. This code shouldn't be modified directly from this project in order to avoid dependency issues
+* `./preprocess`: All the scripts for the data pipeline: Transform raw image and labels.
 
-* `./models`: This directory contain the dilated weights trained on MS-COCO
+* `./postprocess`: For the model's output...
 
 * `./README`: This package contains image will showed on the Gitlab.
 
@@ -41,22 +40,18 @@ Change the path of the model at `demo.py`, and then run:
 python demo.py
 ```
 
-## Training
-Change the path of the trained model and model save path at `train.py`, and then run:
-```
-python train.py
-```
+## Training(Not woring for now)...
 
 ## Evaluation
 Change the path of the model at `eval.py`, and then run:
 ```
 python eval.py
 ```
-### mAP of Bbox on person:
+### mAP of Bbox:
 
 <img src="README/bbox.png" width="500" align="center">
 
-### mAP of Segmentation on person:
+### mAP of Segmentation:
 
 <img src="README/segm.png" width="500" align="center">
 

@@ -6,7 +6,7 @@
  
 ## INSTALLATION
 ### CUDA CODE:
-Build NMS and ROIAlign/CropAndResize
+Build NMS and [ROIAlign/CropAndResize](https://github.com/longcw/RoIAlign.pytorch)
 ```
 cd lib
 ./make.sh

@@ -2,12 +2,10 @@ import numpy as np
 import torch
 from torch.autograd import Variable
 from preprocess.data_center import CocoDataset
-from preprocess.data_generator import data_generator
+from preprocess.coco_data_pipeline import CocoLoader
 from config import Config
 
-def to_variable(numpy_data, cuda=True):
-    numpy_data = numpy_data.astype(np.float32)
-    torch_data = torch.from_numpy(numpy_data)
+def to_variable(torch_data, cuda=True):
     
     variable = Variable(torch_data)
     
@@ -25,50 +23,44 @@ class CocoConfig(Config):
 
     # We use a GPU with 12GB memory, which can fit two images.
     # Adjust down if you use a smaller GPU.
-    IMAGES_PER_GPU = 2
+    IMAGES_PER_GPU = 1
 
     # Uncomment to train on 8 GPUs (default is 1)
-    GPU_COUNT = 4
+    GPU_COUNT = 1
 
     # Number of classes (including background)
     NUM_CLASSES = 1 + 80  # COCO has 80 classes
     
-class InferenceConfig(CocoConfig):
-    # Set batch size to 1 since we'll be running inference on
-    # one image at a time. Batch size = GPU_COUNT * IMAGES_PER_GPU
-    GPU_COUNT = 1
-    IMAGES_PER_GPU = 1
-
-
-config = InferenceConfig()
+config = CocoConfig()
 config.display()
 
-dataset_path = './DATA'
-#dataset_train = CocoDataset()
-#dataset_train.load_coco(args.dataset, "train")
-#dataset_train.load_coco(args.dataset, "val35k")
-#dataset_train.prepare()
+dataset_path = '/home/tensorboy/AI/walmart/DATA'
+dataset_train = CocoDataset()
+dataset_train.load_coco(dataset_path, "train")
+dataset_train.load_coco(dataset_path, "val35k")
+dataset_train.prepare()
 
 # Validation dataset
 dataset_val = CocoDataset()
 dataset_val.load_coco(dataset_path, "minival")
 dataset_val.prepare()
 
-# Data generators
-#train_generator = data_generator(train_dataset, config, shuffle=True, 
-#                                        batch_size=config.BATCH_SIZE)
-                                        
-val_generator = data_generator(dataset_val, config, shuffle=False, 
-                                    batch_size=config.BATCH_SIZE)
+
+train_data = CocoLoader(dataset_train, config, shuffle=True, augment=True, batch_size = 1, num_workers = 6)
+print('train dataset len: {}'.format(len(train_data.dataset)))
+
+# validation data
+valid_data = CocoLoader(dataset_val, config, shuffle=False, augment=False, batch_size = 1, num_workers = 4)
+print('val dataset len: {}'.format(len(valid_data.dataset)))
+
 
 while True:
-    inputs, labels = next(val_generator)
     batch_images, batch_image_meta, \
     batch_rpn_match, batch_rpn_bbox,\
-    batch_gt_class_ids, batch_gt_boxes, batch_gt_masks = inputs
+    batch_gt_class_ids, batch_gt_boxes, batch_gt_masks = next(valid_data.get_stream())
+    batch_images = np.transpose(batch_images, (0,3,1,2))
     
-    batch_images = batch_images.transpose(0,3,1,2)
-    
+
     images = to_variable(batch_images)
     metas = to_variable(batch_image_meta)
     rpns =  to_variable(batch_rpn_match)

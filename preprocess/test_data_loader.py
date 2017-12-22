@@ -43,7 +43,7 @@ class InferenceConfig(CocoConfig):
 config = InferenceConfig()
 config.display()
 
-dataset_path = '/home/tensorboy/AI/walmart/DATA'
+dataset_path = './DATA'
 #dataset_train = CocoDataset()
 #dataset_train.load_coco(args.dataset, "train")
 #dataset_train.load_coco(args.dataset, "val35k")
@@ -65,7 +65,7 @@ while True:
     inputs, labels = next(val_generator)
     batch_images, batch_image_meta, \
     batch_rpn_match, batch_rpn_bbox,\
-    batch_gt_boxes, batch_gt_masks = inputs
+    batch_gt_class_ids, batch_gt_boxes, batch_gt_masks = inputs
     
     batch_images = batch_images.transpose(0,3,1,2)
     

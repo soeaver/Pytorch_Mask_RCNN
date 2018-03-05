@@ -2,7 +2,7 @@ import numpy as np
 import torch
 from torch.autograd import Variable
 from preprocess.data_center import CocoDataset
-from preprocess.coco_data_pipeline import CocoLoader
+from preprocess.coco_data_pipeline import COCOLoader
 from config import Config
 
 def to_variable(torch_data, cuda=True):
@@ -34,7 +34,7 @@ class CocoConfig(Config):
 config = CocoConfig()
 config.display()
 
-dataset_path = '/home/tensorboy/AI/walmart/DATA'
+dataset_path = '/mnt/lvmhdd1/zuoxin/dataset/MSCOCO'
 dataset_train = CocoDataset()
 dataset_train.load_coco(dataset_path, "train")
 dataset_train.load_coco(dataset_path, "val35k")
@@ -46,11 +46,11 @@ dataset_val.load_coco(dataset_path, "minival")
 dataset_val.prepare()
 
 
-train_data = CocoLoader(dataset_train, config, shuffle=True, augment=True, batch_size = 1, num_workers = 6)
+train_data = COCOLoader(dataset_train, config, shuffle=True, augment=True, batch_size = 1, num_workers = 6)
 print('train dataset len: {}'.format(len(train_data.dataset)))
 
 # validation data
-valid_data = CocoLoader(dataset_val, config, shuffle=False, augment=False, batch_size = 1, num_workers = 4)
+valid_data = COCOLoader(dataset_val, config, shuffle=False, augment=False, batch_size = 1, num_workers = 4)
 print('val dataset len: {}'.format(len(valid_data.dataset)))
 
 
@@ -68,12 +68,12 @@ while True:
     gt_boxes = to_variable(batch_gt_boxes)    
     gt_masks = to_variable(batch_gt_masks)
 
-    print images.size()
-    print metas.size()
-    print rpns.size()
-    print rpn_boxes.size()
-    print gt_boxes.size()
-    print gt_masks.size()
+    print(images.size())
+    print(metas.size())
+    print(rpns.size())
+    print(rpn_boxes.size())
+    print(gt_boxes.size())
+    print(gt_masks.size())
     
 
 

@@ -680,11 +680,11 @@ class MaskRCNN(nn.Module):
         rpn_reg_loss = rpn_bbox_loss(
             batch_rpn_bbox, batch_rpn_match, predict_rpn_bbox, config)
 
-        # bbox branch loss->classification
+        # bbox branch loss->bbox
         stage2_reg_loss = mrcnn_bbox_loss(
             batch_mrcnn_bbox, batch_mrcnn_class_ids, predict_mrcnn_bbox)
 
-        # bbox branch loss->bbox
+        # cls branch loss->classification
         stage2_cls_loss = mrcnn_class_loss(
             batch_mrcnn_class_ids, predict_mrcnn_class_logits, active_class_ids, config)
             
@@ -785,7 +785,7 @@ def rpn_bbox_loss(target_bbox, rpn_match, rpn_bbox, config):
     outputs = []
     for i in range(config.IMAGES_PER_GPU):
 #        print(batch_counts[i].cpu().data.numpy()[0])
-        outputs.append(target_bbox[i, torch.arange(int(batch_counts[i].cpu().data.numpy()[0])).type(torch.cuda.LongTensor)])
+        outputs.append(target_bbox[torch.cuda.LongTensor([i]), torch.arange(int(batch_counts[i].cpu().data.numpy()[0])).type(torch.cuda.LongTensor)])
     
     target_bbox = torch.cat(outputs, dim=0)
     

@@ -785,7 +785,7 @@ def rpn_bbox_loss(target_bbox, rpn_match, rpn_bbox, config):
     outputs = []
     for i in range(config.IMAGES_PER_GPU):
 #        print(batch_counts[i].cpu().data.numpy()[0])
-        outputs.append(target_bbox[i, torch.arange(int(batch_counts[i].cpu().data.numpy()[0])).type(torch.cuda.LongTensor)])
+        outputs.append(target_bbox[torch.cuda.LongTensor([i]), torch.arange(int(batch_counts[i].cpu().data.numpy()[0])).type(torch.cuda.LongTensor)])
     
     target_bbox = torch.cat(outputs, dim=0)
     
